@@ -24,7 +24,8 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
     }
 
     if (isset($_POST["product"])) {
-        if ($stmt = $db->prepare('DELETE FROM listings WHERE prod_id="'.$_POST["product"].'"')) {
+        if ($stmt = $db->prepare('DELETE FROM listings WHERE prod_id=?')) {
+            $stmt->bind_param($_POST["product"]);
             $stmt->execute();
             $stmt->close();
         }

@@ -15,8 +15,9 @@ if ( mysqli_connect_errno() ) {
 // If there is an error with the connection, stop the script and display the error.
 }
 
-$stmt = $db->prepare('UPDATE orders SET shipped=current_date() WHERE order_id='.$_POST["order_id"]);
+$stmt = $db->prepare('UPDATE orders SET shipped=current_date() WHERE order_id=?');
 if ($stmt) {
+    $stmt->bind_param("i", $_POST["order_id"]);
     $stmt->execute();
     $stmt->close();
 }

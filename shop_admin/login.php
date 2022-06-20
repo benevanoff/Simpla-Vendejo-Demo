@@ -22,7 +22,8 @@ if (isset($_POST['username']) && isset($_POST['pass'])) {
   // If there is an error with the connection, stop the script and display the error.
   }
 
-  if ($stmt = $db->prepare('SELECT * FROM auth WHERE username="'.$_POST['username'].'"')) {
+  if ($stmt = $db->prepare('SELECT * FROM auth WHERE username=?')) {
+    $stmt->bind_param($_POST["username"]);
     $stmt->execute();
     $users = $stmt->get_result()->fetch_all();
     $stmt->close();

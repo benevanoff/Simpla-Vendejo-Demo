@@ -9,7 +9,8 @@ if ( mysqli_connect_errno() ) {
 // If there is an error with the connection, stop the script and display the error.
 }
 sleep(1);
-if ($stmt = $db->prepare('SELECT * FROM orders WHERE order_id='. $_GET["order"])) {
+if ($stmt = $db->prepare('SELECT * FROM orders WHERE order_id=?')) {
+    $stmt->bind_param("i", $_GET["order_id"]);
     $stmt->execute();
     $order_res = $stmt->get_result()->fetch_all();
     $stmt->close();
@@ -21,7 +22,8 @@ foreach($cart as $cart_entry) {
 }
 unset($cart_entry);
 
-if ($stmt = $db->prepare('SELECT * FROM payments WHERE order_id='. $_GET["order"])) {
+if ($stmt = $db->prepare('SELECT * FROM payments WHERE order_id=?')) {
+    $stmt->bind_param("i", $_GET["order_id"]);
     $stmt->execute();
     $payment_res = $stmt->get_result()->fetch_all();
     $stmt->close();

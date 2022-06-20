@@ -36,7 +36,8 @@ $cart_entries = [];
 $total_cost = 0;
 if (isset($_SESSION["cart"])) {
   foreach($_SESSION["cart"] as $prod_id => $cart_item) {
-      if ($stmt = $db->prepare('SELECT * FROM listings WHERE prod_id="'.$prod_id.'"')) {
+      if ($stmt = $db->prepare('SELECT * FROM listings WHERE prod_id=?')) {
+          $stmt->bind_param("i", $prod_id);
           $stmt->execute();
           $listing = $stmt->get_result()->fetch_all();
           $stmt->close();

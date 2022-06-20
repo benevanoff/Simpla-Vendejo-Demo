@@ -25,7 +25,8 @@ if ( mysqli_connect_errno() ) {
 
 $order_id = random_int(1, 99999);
 $cart = json_encode($_SESSION["cart"]);
-if ($stmt = $db->prepare('INSERT INTO orders (order_id, details, customer_name, shipping_addr, contact) VALUES ('.$order_id.', \''.$cart.'\', "'.$_POST["first_name"].' '.$_POST["last_name"] .'", "'.$_POST["shipping_addr"].'", "'.$_POST["contact"].'")')) {
+if ($stmt = $db->prepare('INSERT INTO orders (order_id, details, customer_name, shipping_addr, contact) VALUES (?, ?, ?, ?, ?)')) {
+    $stmt->bind_param("issss", $order_id, $cart, $_POST["first_name"], $_POST["last_name"], $_POST["shipping_addr"], $_POST["contact"]);
     $stmt->execute();
     $stmt->close();
 }

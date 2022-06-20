@@ -37,9 +37,10 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']) {
 	// If there is an error with the connection, stop the script and display the error.
     }
 
-    $query = 'INSERT INTO listings (prod_id, name, description, price, img_name) VALUES ('.$prod_id.', "'. $_POST["product_name"] .'", "'. $_POST["product_description"] .'", '. $_POST["price"] .', "abc")';
+    $query = 'INSERT INTO listings (prod_id, name, description, price) VALUES (?, ?, ?, ?)';
     echo $query;
     if ($stmt = $db->prepare($query)) {
+        $stmt->bind_param("issd", $prod_id, $_POST["product_name"], $_POST["product_description"], $_POST["price"]);
         $stmt->execute();
         $stmt->close();
     }

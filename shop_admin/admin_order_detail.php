@@ -10,7 +10,8 @@ if (isset($_GET["order_id"]) && isset($_SESSION["admin"]) && $_SESSION["admin"])
     if ( mysqli_connect_errno() ) {
       // If there is an error with the connection, stop the script and display the error.
     }
-    if ($stmt = $db->prepare('SELECT * FROM orders WHERE order_id="'.$_GET["order_id"].'"')) {
+    if ($stmt = $db->prepare('SELECT * FROM orders WHERE order_id=?')) {
+        $stmt->bind_param("i", $order_id);
         $stmt->execute();
         $order_result = ($stmt->get_result()->fetch_all())[0];
         $stmt->close();
