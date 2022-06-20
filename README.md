@@ -49,3 +49,8 @@ The listings page is where you can manage which products you are currently liste
 ![listings](docs/listings_list.PNG)
 
 ![new_listing](docs/new_listing.PNG)
+
+### Tips
+
+If you'd like to support the development of this software consider tipping XMR :)
+`8AQ2BLDJe6hBPxDs2qzaqrSfjB4QEszEtF5ufUFzLcKxELFuu7EcKZaHkpQxHv3W3j1H2AyRS3GZ7W92Fv5Y3TiAS6bc1U5`
