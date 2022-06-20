@@ -33,12 +33,19 @@ The listing images should live in a folder in the repo root called `listing_imgs
 
 #### Using the admin panel
 After logging in, a handful of the most recent "ready" (paid but not shipped) orders will be displayed along with buttons to view the entire order history as well as to manage your listings.
+
 ![dashboard](docs/admin_dash.PNG)
+
 The order history page will display a list of all orders as well as their payment status either not paid, pending, or confirmed.
+
 ![orders](docs/admin_orders.PNG)
+
 If you click on any of the orders listed it will show you the complete cart as well as the shipping and contact details of the customer.
+
 ![order_detail](docs/admin_order_detail.PNG)
+
 The listings page is where you can manage which products you are currently listed on the front page of your e-shop.
+
 ![listings](docs/listings_list.PNG)
 
 ![new_listing](docs/new_listing.PNG)
